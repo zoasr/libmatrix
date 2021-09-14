@@ -14,7 +14,7 @@ endif
 
 all: main
 
-main: main.o matrix.o _2DVector.o console_color.o clean
+main: main.o matrix.o _2DVector.o console_color.o
 	g++ main.o matrix.o _2DVector.o console_color.o -o main
 
 main.o: src/main.cpp
