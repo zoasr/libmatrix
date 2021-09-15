@@ -1,8 +1,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <time.h>
-#include "console_color.h"
-#include "_2DVector.h"
+#include "consoleColor.h"
+#include "Vector2D.h"
 
 
 #define UR_BRACKET	"┐"

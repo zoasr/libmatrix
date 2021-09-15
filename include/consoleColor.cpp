@@ -1,3 +1,4 @@
+#include "consoleColor.h"
 #ifdef _WIN32
 #include <windows.h>
 #define FOREGROUND_REGULAR	15

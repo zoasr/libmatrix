@@ -1,5 +1,5 @@
 #include <vector>
-#include "_2DVector.h"
+#include "Vector2D.h"
 
 
 #if defined( _2DVECTOR_H)
