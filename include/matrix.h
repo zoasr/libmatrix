@@ -90,6 +90,7 @@ public:
 	* @returns Matrix with same size
 	*/
 	Matrix add(Matrix a);
+	Matrix add(double a);
 
 	/**
 	 * @brief adding two matrices to each other
@@ -101,8 +102,17 @@ public:
 	static Matrix add(Matrix a, Matrix b) {
 		return a.add(b);
 	}
+	static Matrix add(Matrix a, double b) {
+		return a.add(b);
+	}
+	static Matrix add(double a, Matrix b) {
+		return b.add(a);
+	}
 
 	Matrix operator+(const Matrix& rhs) {
+		return this->add(rhs);
+	}
+	Matrix operator+(const double& rhs) {
 		return this->add(rhs);
 	}
 
@@ -144,6 +154,7 @@ public:
 	 * @returns Matrix of the same size
 	 */
 	Matrix sub(Matrix a);
+	Matrix sub(double a);
 
 	/**
 	 * @brief subtracting two matrices from each other
@@ -153,10 +164,20 @@ public:
 	 * @returns Matrix of the same size
 	 */
 	static Matrix sub(Matrix a, Matrix b) {
-		return a - b;
+		return a.sub(b);
+	}
+	static Matrix sub(Matrix a, double b) {
+		return a.sub(b);
+	}
+	static Matrix sub(double a, Matrix b) {
+		return (b * -1).add(a);
 	}
 
 	Matrix operator-(const Matrix& rhs) {
+		return this->sub(rhs);
+	}
+
+	Matrix operator-(const double& rhs) {
 		return this->sub(rhs);
 	}
 
@@ -201,6 +222,17 @@ public:
 
 	Matrix operator*(const Matrix& rhs) {
 		return this->mult(rhs);
+	}
+	Matrix operator*(const double& rhs) {
+		return this->mult(rhs);
+	}
+
+	Matrix div(Matrix a);
+	static Matrix div(Matrix a, Matrix b) {
+		return a.div(b);
+	}
+	Matrix operator/(const Matrix& rhs) {
+		return this->div(rhs);
 	}
 
 	/**
