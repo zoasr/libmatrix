@@ -20,8 +20,6 @@ Matrix Matrix::add(Matrix a) {
 	}
 	else {
 		throw std::invalid_argument("You can't add these two matrices (they must have the same size)");
-		// cout << "You can't add these two matrices (they must have the same size)\n";
-		// return Matrix(1, 1);
 	}
 	return A;
 }
@@ -72,8 +70,6 @@ Matrix Matrix::sub(Matrix a) {
 	}
 	else {
 		throw std::invalid_argument("You can't subtract these two matrices (they must have the same size)");
-		// cout << "You Can't Subtract These two matrices (they must have the same size)\n";
-		// return Matrix(1, 1);
 	}
 	return S;
 }
@@ -100,8 +96,6 @@ Matrix Matrix::mult(Matrix a) {
 	}
 	else if (m_cols != a.m_rows) {
 		throw std::invalid_argument("You Can't Multiply These two matrices");
-		// cout << "You Can't Multiply These two matrices\n";
-		// return Matrix(1, 1);
 	}
 	else {
 		for (int i = 0; i < P.m_rows; i++)
@@ -195,14 +189,8 @@ Matrix Matrix::inverse() {
 
 	if (m_rows != m_cols) {
 		throw std::invalid_argument("Non-square matrices can't be inverted!");
-		// cout << "To calculate inverse of matrix: (" << name << ") "
-		// 	<< "it must be a square matrix\n\n";
-		// return Matrix(1, 1);
 	}
 	else if (det == 0) {
-		// throw std::invalid_argument("Matrices with determinant 0 can't be inverted!");
-		// cout << "\nThere is no inverse to the Matrix:" << name << "["
-		// 	<< m_rows << " x " << m_cols << "] (determinant is ZERO)\n";
 		printf("\nThere is no inverse to the Matrix:%s[%d x %d] (determinant is ZERO)\n", original_name.c_str(), m_rows, m_cols);
 		return *this;
 	}
@@ -283,9 +271,6 @@ double Matrix::determ() {
 	Matrix temp = *this;
 	if (m_rows != m_cols) {
 		throw std::invalid_argument("Non-square matrices don't have a determinant");
-		// cout << "To calculate determinant of matrix: (" << a.name << ") "
-		// 	<< "it must be a square matrix";
-		// return 0;
 	}
 	else if (m_rows == 1)
 		return data[0][0];
@@ -329,8 +314,6 @@ double Matrix::determ() {
 Matrix Matrix::power(int n) {
 	if (m_cols != m_rows) {
 		throw std::invalid_argument("Power is only for square Matrices");
-		// cout << "Power is only for square Matrices\n";
-		// return Matrix(1, 1);
 	}
 	else {
 		Matrix temp = *this;
@@ -345,24 +328,16 @@ Matrix Matrix::power(int n) {
 void Matrix::print() {
 	color(FOREGROUND_GREEN);
 	if (m_rows == 1 && m_cols == 1) {
-		// cout << "Scalar (" << name << "):\n";
 		printf("Scalar (%s):\n", name.c_str());
 		color(FOREGROUND_BLUE);
-		// cout << "[" << data[0][0] << "]\n\n";
 		printf("[%.3f]\n\n", data[0][0]);
 		color(FOREGROUND_REGULAR);
 		return;
 	}
 	else if (m_rows == 1 || m_cols == 1) {
-		// cout << "Vector "
-		// 	<< "( " << name << " )"
-		// 	<< "[" << m_rows << " x " << m_cols << "] is:  \n\n";
 		printf("Vector ( %s )[%dx%d] is:  \n\n", name.c_str(), m_rows, m_cols);
 	}
 	else {
-		// cout << "Matrix "
-		// 	<< "( " << name << " )"
-		// 	<< "[" << m_rows << " x " << m_cols << "] is:  \n\n";
 		printf("Matrix ( %s )[%dx%d] is:  \n\n", name.c_str(), m_rows, m_cols);
 	}
 	color(FOREGROUND_BLUE);
@@ -372,16 +347,11 @@ void Matrix::print() {
 				continue;
 			else if (m_cols == 1) {
 				if (i == 0 && m_rows > 1)
-					// cout << UL_BRACKET << "  " << data[i][j] << "  " << UR_BRACKET;
 					printf("%s  %.3f  %s", UL_BRACKET, data[i][j], UR_BRACKET);
 
 				else if (i == m_rows - 1 && m_rows > 1)
-					// cout << BL_BRACKET << "  " << data[i][j] << "  " << BR_BRACKET;
 					printf("%s  %.3f  %s", BL_BRACKET, data[i][j], BR_BRACKET);
 				else {
-					// cout << "|"
-					// 	<< "  " << data[i][j] << "  "
-					// 	<< "|";
 					printf("|  %.3f  |", data[i][j]);
 				}
 			}
@@ -389,61 +359,46 @@ void Matrix::print() {
 				if (j == m_cols - 1) {
 					if (i == 0 && m_rows > 1)
 						printf("%.3f\t %s", data[i][j], UR_BRACKET);
-					// cout << data[i][j] << "\t" << UR_BRACKET;
 					else if (i == m_rows - 1 && m_rows > 1)
-						// cout << data[i][j] << "\t" << BR_BRACKET;
 						printf("%.3f\t %s", data[i][j], BR_BRACKET);
 					else if (m_rows == 1)
-						// cout << data[i][j] << "\t]";
 						printf("%.3f\t]", data[i][j]);
 					else if (m_rows > 1)
-						// cout << data[i][j] << "\t|";
 						printf("%.3f\t |", data[i][j]);
 				}
 				else if (j == 0) {
 					if (i == 0 && m_rows > 1)
-						// cout << UL_BRACKET << "\t" << data[i][j] << "\t";
 						printf("%s\t %.3f\t", UL_BRACKET, data[i][j]);
 					else if (i == m_rows - 1 && m_rows > 1)
-						// cout << BL_BRACKET << "\t" << data[i][j] << "\t";
 						printf("%s\t %.3f\t", BL_BRACKET, data[i][j]);
 
 					else if (m_rows == 1)
-						// cout << "["
-						// << "\t" << data[i][j] << "\t";
 						printf("[\t%.3f\t", data[i][j]);
 					else
-						// cout << "|"
-						// << "\t" << data[i][j] << "\t";
 						printf("|\t %.3f\t", data[i][j]);
 
 				}
 				else
-					// cout << data[i][j] << "\t";
 					printf("%.3f\t", data[i][j]);
 
 			}
 		}
-		// cout << "\n";
 		printf("\n");
 	}
-	// cout << " \n\n\n";
 	printf("\n\n\n");
 	color(FOREGROUND_REGULAR);
 }
 
 void Matrix::input() {
-	std::cout << "Input elements For Matrix " << name << "[" << m_rows
-		<< " x " << m_cols << "]=> \n";
+	printf("Input elements for Matrix %s [%d x %d]=> \n", name.c_str(), m_rows, m_cols);
 	for (int i = 0; i < m_rows; i++) {
 		for (int j = 0; j < m_cols; j++) {
-			std::cout << "enter element "
-				<< "[" << i + 1 << "," << j + 1 << "]"
-				<< ": ";
+			printf("Enter element [%d,%d]: ", i + 1, j + 1);
 			std::cin >> data[i][j];
+			scanf("", &data[i][j]);
 		}
 	}
-	std::cout << "\n";
+	printf("\n");
 	if (m_cols == 1 && m_rows == 1)
 		name = std::to_string(data[0][0]);
 }
