@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 
 #ifndef _2DVECTOR_H
