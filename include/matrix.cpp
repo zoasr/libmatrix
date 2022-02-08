@@ -26,6 +26,15 @@ Matrix Matrix::add(Matrix a) {
 	return A;
 }
 
+Matrix Matrix::add(double a) {
+	Matrix A(m_rows, m_cols);
+	A.name = name + " + " + std::to_string(a);
+	for (int i = 0; i < A.m_rows; i++)
+		for (int j = 0; j < A.m_cols; j++)
+			A.data[i][j] = data[i][j] + a;
+	return A;
+}
+
 Matrix Matrix::augment(Matrix a) {
 	if (a.m_rows != m_rows) {
 		printf("Can't augment Matrix %s with Matrix %s (no compatible sizes)\n\n", original_name.c_str(), a.original_name.c_str());
@@ -69,6 +78,15 @@ Matrix Matrix::sub(Matrix a) {
 	return S;
 }
 
+Matrix Matrix::sub(double a) {
+	Matrix S(m_rows, m_cols);
+	S.name = name + " - " + std::to_string(a);
+	for (int i = 0; i < S.m_rows; i++)
+		for (int j = 0; j < S.m_cols; j++)
+			S.data[i][j] = data[i][j] - a;
+	return S;
+}
+
 Matrix Matrix::mult(Matrix a) {
 	Matrix P(m_rows, a.m_cols);
 	P.name = name + " x " + a.name;
@@ -100,6 +118,13 @@ Matrix Matrix::mult(double a) {
 		for (int j = 0; j < P.m_cols; j++)
 			P.data[i][j] *= a;
 	return P;
+}
+
+Matrix Matrix::div(Matrix a) {
+	return this->mult(a.inverse());
+}
+Matrix Matrix::div(double a) {
+	return this->mult(1 / a);
 }
 
 Matrix Matrix::transpose() {

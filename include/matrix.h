@@ -228,6 +228,7 @@ public:
 	}
 
 	Matrix div(Matrix a);
+	Matrix div(double a);
 	static Matrix div(Matrix a, Matrix b) {
 		return a.div(b);
 	}
