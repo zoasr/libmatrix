@@ -1,4 +1,4 @@
-#include "matrix.h"
+#include "../include/matrix.h"
 #if defined(MCLASS_H)
 
 
