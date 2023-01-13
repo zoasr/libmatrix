@@ -1,5 +1,10 @@
 .vscode
-test.cpp
+bin/*
+build/*
+test.*
 *.exe
+*.dll
+*.a
+*.so
 *.o
 *.gch
