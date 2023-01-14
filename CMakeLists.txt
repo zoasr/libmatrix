@@ -24,8 +24,12 @@ add_library(matrixlibstatic STATIC
 # Compile all the Examples in the "examples" folder
 foreach( example_source ${EXAMPLE_SOURCES} )
 	get_filename_component( examplename ${example_source} NAME_WE)
-	add_executable( ${examplename} ${example_source} )
-	target_link_libraries( ${examplename} matrixlib )
+	add_executable( ${examplename}
+		${example_source}
+		${matrixlib_cpp}
+		${matrixlib_h}
+	)
+	# target_link_libraries( ${examplename} matrixlib )
 endforeach( example_source ${EXAMPLE_SOURCES} )
 
 
