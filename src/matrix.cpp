@@ -141,6 +141,31 @@ double Matrix::trace() {
 	return trace_;
 }
 
+Matrix Matrix::rotation(double theta) {
+	Matrix R(2, 2, "R(theta)");
+	R.data = { {cos(theta), -sin(theta)}, {sin(theta), cos(theta)} };
+	return R;
+}
+
+Matrix Matrix::rotationX(double theta) {
+	Matrix R(3, 3, "R(theta, i)");
+	R.data = { {1, 0, 0}, {0, cos(theta), -sin(theta)}, {0, sin(theta), cos(theta)} };
+	return R;
+};
+
+Matrix Matrix::rotationY(double theta) {
+	Matrix R(3, 3, "R(theta, j)");
+	R.data = { {cos(theta), 0, sin(theta)}, {0, 1, 0}, {-sin(theta), 0, cos(theta)} };
+	return R;
+};
+
+Matrix Matrix::rotationZ(double theta) {
+	Matrix R(3, 3, "R(theta, k)");
+	R.data = { {cos(theta), -sin(theta), 0}, {sin(theta), cos(theta), 0}, {0, 0, 1} };
+	return R;
+};
+
+
 Matrix Matrix::rotate(int dir) {
 	Matrix R = *this;
 

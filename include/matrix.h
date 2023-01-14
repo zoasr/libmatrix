@@ -4,6 +4,7 @@
 #include <time.h>
 #include "consoleColor.h"
 #include "Vector2D.h"
+#include <math.h>
 
 
 #define UR_BRACKET	"┐"
@@ -11,6 +12,9 @@
 #define BR_BRACKET	"┘"
 #define UL_BRACKET	"┌"
 
+#define X 1
+#define Y 2
+#define Z 3
 
 #ifndef MCLASS_H
 #define MCLASS_H
@@ -257,6 +261,11 @@ public:
 	static double trace(Matrix a) {
 		return a.trace();
 	};
+
+	static Matrix rotation(double theta);
+	static Matrix rotationX(double theta);
+	static Matrix rotationY(double theta);
+	static Matrix rotationZ(double theta);
 
 	/**
 	 *   @brief rotates a given matrix by 90 degrees (clockwise or anticlockwise)
