@@ -130,6 +130,17 @@ Matrix Matrix::transpose() {
 	return t;
 }
 
+double Matrix::trace() {
+	if (m_rows != m_cols) {
+		printf("Can't calculate trace of a non-square Matrix ");
+		return 0;
+	}
+	double trace_ = 0;
+	for (int i = 0; i < m_rows; i++)
+		trace_ += data[i][i];
+	return trace_;
+}
+
 Matrix Matrix::rotate(int dir) {
 	Matrix R = *this;
 

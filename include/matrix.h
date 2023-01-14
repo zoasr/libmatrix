@@ -253,6 +253,11 @@ public:
 		return a.transpose();
 	}
 
+	double trace();
+	static double trace(Matrix a) {
+		return a.trace();
+	};
+
 	/**
 	 *   @brief rotates a given matrix by 90 degrees (clockwise or anticlockwise)
 	 * depending on the direction
