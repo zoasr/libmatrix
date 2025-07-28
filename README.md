@@ -15,8 +15,8 @@ A small `C++` library for various Matrix computations.
 ### Building and compiling examples:
 
 ```bash
-git clone https://github.com/ZOASR/Matrix_cpp
-cd libmatrix-master
+git clone https://github.com/zoasr/libmatrix
+cd libmatrix
 cd build
 cmake .. && make install
 ```
